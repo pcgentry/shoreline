@@ -1,0 +1,5 @@
+.terraform.lock.hcl
+output/.terraform.lock.hcl
+.terraform/*
+output/.terraform/*
+.vscode/*

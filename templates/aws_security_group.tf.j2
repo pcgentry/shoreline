@@ -1,0 +1,19 @@
+module "sample_security_group" {
+  source = "terraform-aws-modules/security-group/aws"
+
+  name        = "user-service"
+  description = "Security group for user-service"
+  vpc_id      = "vpc-12345678"
+
+  ingress_with_cidr_blocks = [
+  {% for rule in rule_definitions %}
+    {
+      from_port   = {{ rule['port'] }}
+      to_port     = {{ rule['port'] }}
+      protocol    = "{{ rule['protocol'] }}"
+      description = "{{ rule['description'] }}"
+      cidr_blocks = "{{ rule['source_ip'] }}"
+    }{{ "," if not loop.last }}
+  {% endfor %}
+  ]
+}

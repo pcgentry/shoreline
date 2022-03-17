@@ -1,0 +1,15 @@
+{% for rule in rule_definitions %}
+resource "google_compute_firewall" "{{ rule['name'] }}" {
+  name    = "{{ rule['name'] }}-firewall-ssh"
+  network = "sample-network"
+
+  allow {
+    protocol = "{{ rule['protocol'] }}"
+    ports    = ["{{ rule['port'] }}"]
+  }
+
+  target_tags   = ["{{ rule['name'] }}-firewall-ssh"]
+  source_ranges = ["{{ rule['source_ip'] }}"]
+}
+
+{% endfor %}
