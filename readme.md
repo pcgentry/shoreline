@@ -19,4 +19,4 @@ Terraform files using Jinja2, then writes them to disk.
 
 *** Full disclosure, this was just quick example code that I wrote for the assessment. There was no testing of the final
 terraform modules. I know they are in the ballpark, but I don't have GCP or AWS resources handy to test with, so I took 
-it as far as 'terraform plan', and that's it.
+it as only far as 'terraform plan'.
